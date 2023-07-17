@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/KeyboardShortcutTracker/static/css/main.e2f0587d.css",
-    "main.js": "/KeyboardShortcutTracker/static/js/main.3a577a6f.js",
-    "index.html": "/KeyboardShortcutTracker/index.html",
-    "main.e2f0587d.css.map": "/KeyboardShortcutTracker/static/css/main.e2f0587d.css.map",
-    "main.3a577a6f.js.map": "/KeyboardShortcutTracker/static/js/main.3a577a6f.js.map"
+    "main.css": "/hiring-app/static/css/main.91b02f6c.css",
+    "main.js": "/hiring-app/static/js/main.a639af82.js",
+    "index.html": "/hiring-app/index.html",
+    "main.91b02f6c.css.map": "/hiring-app/static/css/main.91b02f6c.css.map",
+    "main.a639af82.js.map": "/hiring-app/static/js/main.a639af82.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2f0587d.css",
-    "static/js/main.3a577a6f.js"
+    "static/css/main.91b02f6c.css",
+    "static/js/main.a639af82.js"
   ]
 }
