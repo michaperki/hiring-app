@@ -1,22 +1,24 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from "firebase/firestore";
 import { getDatabase, ref, set, push } from "firebase/database";
+
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAl5dD48oaQPeXO4gXt20wg1vLuWwhQe2k",
-  authDomain: "keyboardshortcuts-b88ba.firebaseapp.com",
-  projectId: "keyboardshortcuts-b88ba",
-  storageBucket: "keyboardshortcuts-b88ba.appspot.com",
-  messagingSenderId: "541413759303",
-  appId: "1:541413759303:web:878fc28f84b4bb66d01462",
-  measurementId: "G-73ERLM4RQ8",
-  databaseURL: "https://keyboardshortcuts-b88ba-default-rtdb.firebaseio.com/"
+  apiKey: "AIzaSyDU-vtsA6I-K4dGI59AEJ-aFR7BPRVUOyY",
+  authDomain: "hiring-app-56769.firebaseapp.com",
+  databaseURL: "https://hiring-app-56769-default-rtdb.firebaseio.com",
+  projectId: "hiring-app-56769",
+  storageBucket: "hiring-app-56769.appspot.com",
+  messagingSenderId: "478007660523",
+  appId: "1:478007660523:web:ca70be77da9e09f65953ae",
+  measurementId: "G-DVJ6XHN89P",
 };
 
 // Initialize Firebase
@@ -36,13 +38,36 @@ const addShortcutToDatabase = (shortcut, userId, userEmail) => {
   const newShortcutKey = push(newShortcutRef).key;
   const newShortcutWithKey = { ...newShortcutData, key: newShortcutKey };
 
-  return set(newShortcutRef.child(newShortcutKey), newShortcutWithKey).then(() => newShortcutWithKey);
+  return set(newShortcutRef.child(newShortcutKey), newShortcutWithKey).then(
+    () => newShortcutWithKey
+  );
 };
 
 const updateShortcutInDatabase = (shortcutKey, updates) => {
-  const databaseRef = ref(database, `users/${updates.userId}/shortcuts/${shortcutKey}`);
+  const databaseRef = ref(
+    database,
+    `users/${updates.userId}/shortcuts/${shortcutKey}`
+  );
   return set(databaseRef, updates, { merge: true });
 };
 
+const setNewUserOnboardingStatus = (userId) => {
+  const databaseRef = ref(database, `users/${userId}`);
+  return set(databaseRef, { onboardingComplete: false }, { merge: true });
+};
 
-export { auth, database, ref, set, addShortcutToDatabase, updateShortcutInDatabase };
+const setOnboardingStatusComplete = (userId) => {
+  const databaseRef = ref(database, `users/${userId}`);
+  return set(databaseRef, { onboardingComplete: true }, { merge: true });
+};
+
+export {
+  auth,
+  database,
+  ref,
+  set,
+  addShortcutToDatabase,
+  updateShortcutInDatabase,
+  setNewUserOnboardingStatus,
+  setOnboardingStatusComplete,
+};

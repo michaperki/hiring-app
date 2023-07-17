@@ -21,7 +21,7 @@ const Login = ({ handleUserLogin }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        handleUserLogin(user); // Pass the user information to handleUserLogin
+        handleUserLogin(email, password);
         navigate("/");
         console.log(user);
       })
