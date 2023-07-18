@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/hiring-app/static/css/main.aefa9aea.css",
-    "main.js": "/hiring-app/static/js/main.714466f2.js",
+    "main.js": "/hiring-app/static/js/main.674936aa.js",
     "index.html": "/hiring-app/index.html",
     "main.aefa9aea.css.map": "/hiring-app/static/css/main.aefa9aea.css.map",
-    "main.714466f2.js.map": "/hiring-app/static/js/main.714466f2.js.map"
+    "main.674936aa.js.map": "/hiring-app/static/js/main.674936aa.js.map"
   },
   "entrypoints": [
     "static/css/main.aefa9aea.css",
-    "static/js/main.714466f2.js"
+    "static/js/main.674936aa.js"
   ]
 }
