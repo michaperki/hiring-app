@@ -1,44 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ isLoggedIn, onLogout, isMenuOpen, handleSidebarClose }) => {
+const Sidebar = ({ isLoggedIn, onLogout, handleSidebarClose }) => {
   return (
-    <div
-      className={`fixed left-0 top-0 bottom-0 bg-gray-800 w-64 p-4 ${
-        isMenuOpen ? "sidebar-open" : "sidebar-closed"
-      }`}
-      style={{ zIndex: 20 }} // Set z-index for the sidebar
-    >
-      <nav className="space-y-4">
-        {isLoggedIn ? (
+    <div className="bg-gray-900 text-white px-4 py-8 space-y-6">
+      {/* Add your sidebar content here */}
+      {isLoggedIn ? (
+        <>
+          <Link to="/dashboard" className="block text-white hover:text-gray-200">
+            Dashboard
+          </Link>
           <button
-            className="text-white text-lg font-semibold py-2 px-4 rounded-md hover:bg-gray-700 transition-colors"
-            onClick={() => {
-              onLogout();
-              handleSidebarClose(); // Close the sidebar after clicking Logout
-            }}
+            className="bg-transparent hover:bg-white text-white hover:text-gray-900 border border-white hover:border-transparent rounded-md px-4 py-2 transition-colors"
+            onClick={onLogout}
           >
             Logout
           </button>
-        ) : (
-          <>
-            <Link
-              to="/login"
-              className="text-white text-lg font-semibold py-2 px-4 rounded-md hover:bg-gray-700 transition-colors"
-              onClick={handleSidebarClose} // Close the sidebar after clicking Login
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="text-white text-lg font-semibold py-2 px-4 rounded-md hover:bg-gray-700 transition-colors"
-              onClick={handleSidebarClose} // Close the sidebar after clicking Signup
-            >
-              Sign Up
-            </Link>
-          </>
-        )}
-      </nav>
+        </>
+      ) : (
+        <>
+          <Link to="/login" className="block text-white hover:text-gray-200">
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="bg-white text-gray-900 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors"
+          >
+            Sign Up
+          </Link>
+        </>
+      )}
+
+      {/* Button to close the sidebar */}
+      <button
+        className="block text-white hover:text-gray-200"
+        onClick={handleSidebarClose}
+      >
+        Close Sidebar
+      </button>
     </div>
   );
 };

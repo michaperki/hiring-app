@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
 
 const Header = ({ isLoggedIn, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +12,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
     <header className="py-4 px-6 bg-gray-900 text-white">
       <div className="flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
-          <h1 className="text-xl font-semibold">KeyboardShortcutTracker</h1>
+          <h1 className="text-xl font-semibold">Hiring App</h1>
         </Link>
         {/* Mobile Menu */}
         <div className="md:hidden">
@@ -49,7 +48,7 @@ const Header = ({ isLoggedIn, onLogout }) => {
         {/* Desktop Menu */}
         <nav
           className={`hidden md:flex space-x-4 ${
-            isMenuOpen ? "flex justify-end" : "hidden"
+            isMenuOpen ? "hidden" : "flex"
           }`}
         >
           {isLoggedIn ? (
@@ -78,13 +77,38 @@ const Header = ({ isLoggedIn, onLogout }) => {
         </nav>
       </div>
       {/* Sidebar for Mobile */}
-      <div className={`sidebar md:hidden`}>
-        <Sidebar
-          isLoggedIn={isLoggedIn}
-          onLogout={onLogout}
-          isMenuOpen={isMenuOpen}
-          handleSidebarClose={() => setIsMenuOpen(false)} // Pass the function to close the sidebar
-        />
+      <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
+        <div className="sidebar bg-gray-900 text-white">
+          <ul className="space-y-2 py-4 px-6">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            {isLoggedIn ? (
+              <div>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li>
+                  <button
+                    className="bg-transparent hover:bg-white text-white hover:text-gray-900 border border-white hover:border-transparent rounded-md px-4 py-2 transition-colors"
+                    onClick={onLogout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </div>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
       </div>
     </header>
   );
